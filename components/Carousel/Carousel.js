@@ -25,32 +25,44 @@ function carouselComp() {
 
   const rightbutton = document.createElement("div");
 
-  const imgArray = ["./assets/carousel/mountains.jpeg", "./assets/carousel/computer.jpeg", "./assets/carousel/trees.jpeg", "./assets/carousel/turntable.jpeg"]
+  const imgArray = [
+    "./assets/carousel/mountains.jpeg",
+    "./assets/carousel/computer.jpeg",
+    "./assets/carousel/trees.jpeg",
+    "./assets/carousel/turntable.jpeg"
+  ];
 
   let index = 0;
   img.src = imgArray[index];
 
   leftbutton.textContent = "<";
   rightbutton.textContent = ">";
-  
-  
 
   carousel.append(leftbutton, img, rightbutton);
 
   carousel.classList.add("carousel");
   leftbutton.classList.add("left-button");
   rightbutton.classList.add("right-button");
-  img.style.display = ("block");
+  img.style.display = "block";
 
-  rightbutton.addEventListener('click', event => {
-    index++
-    img.src = imgArray[index]
-  })
+  rightbutton.addEventListener("click", event => {
+    if (index < 3) {
+      index++;
+      img.src = imgArray[index];
+    } else {
+      index = -1;
+    }
+  });
 
-  leftbutton.addEventListener('click', event => {
-    index--
-    img.src = imgArray[index]
-  })
+  leftbutton.addEventListener("click", event => {
+    if (index < 1) {
+      index = 4;
+    } else {
+      index--;
+      img.src = imgArray[index];
+      img.classList.toggle("fade-in");
+    }
+  });
 
   return carousel;
 }
