@@ -15,10 +15,9 @@ axios
     response.data.topics.forEach(topic => {
       topics.append(Tabs(topic));
     });
-    console.log(response);
   })
   .catch(error => {
-    console.log(error);
+    alert("API Error");
   });
 
 function Tabs(name) {
