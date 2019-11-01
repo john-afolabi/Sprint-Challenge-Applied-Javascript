@@ -22,4 +22,7 @@ function Header() {
   temp.classList.add("temp");
 
   return header;
-}
+};
+
+const headerContainer = document.querySelector('.header-container');
+headerContainer.append(Header());
