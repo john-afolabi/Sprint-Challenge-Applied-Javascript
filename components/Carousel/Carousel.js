@@ -21,24 +21,36 @@
 function carouselComp() {
   const carousel = document.createElement("div");
   const leftbutton = document.createElement("div");
-  const img1 = document.createElement("img");
-  const img2 = document.createElement("img");
-  const img3 = document.createElement("img");
-  const img4 = document.createElement("img");
+  const img = document.createElement("img");
+
   const rightbutton = document.createElement("div");
+
+  const imgArray = ["./assets/carousel/mountains.jpeg", "./assets/carousel/computer.jpeg", "./assets/carousel/trees.jpeg", "./assets/carousel/turntable.jpeg"]
+
+  let index = 0;
+  img.src = imgArray[index];
 
   leftbutton.textContent = "<";
   rightbutton.textContent = ">";
-  img1.src = "./assets/carousel/mountains.jpeg";
-  img2.src = "./assets/carousel/computer.jpeg";
-  img3.src = "./assets/carousel/trees.jpeg";
-  img4.src = "./assets/carousel/turntable.jpeg";
+  
+  
 
-  carousel.append(leftbutton, img1, img2, img3, img4, rightbutton);
+  carousel.append(leftbutton, img, rightbutton);
 
   carousel.classList.add("carousel");
   leftbutton.classList.add("left-button");
   rightbutton.classList.add("right-button");
+  img.style.display = ("block");
+
+  rightbutton.addEventListener('click', event => {
+    index++
+    img.src = imgArray[index]
+  })
+
+  leftbutton.addEventListener('click', event => {
+    index--
+    img.src = imgArray[index]
+  })
 
   return carousel;
 }
